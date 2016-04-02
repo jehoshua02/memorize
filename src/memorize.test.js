@@ -1,21 +1,18 @@
-var memorize = require('./memorize');
+var Memorize = require('./memorize');
+var _ = require('lodash');
 
-describe('memorize', function () {
+describe('Memorize', function () {
+  var input = 'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.';
+
   it('should return string with some words missing', function () {
-    var input = 'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.';
-
-    var actual = memorize(input);
-    console.log(input);
-    console.log(actual);
-
+    var actual = new Memorize(input).hide(12).toString();
     expect(actual.length).to.equal(input.length);
     expect(actual).to.not.equal(input);
+    expect(actual.match(/_+/g).length).to.equal(12);
+  });
 
-    var n = actual.replace(/_+/g, '_').split(' ').filter(function (word) {
-      return word === '_';
-    }).length;
-
-    expect(n).to.equal(12);
-
+  it('should unhide words too', function () {
+    var actual = new Memorize(input).hide(12).unhide(3).toString();
+    expect(actual.match(/_+/g).length).to.equal(9);
   });
 });
