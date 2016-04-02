@@ -15,4 +15,11 @@ describe('Memorize', function () {
     var actual = new Memorize(input).hide(12).unhide(3).toString();
     expect(actual.match(/_+/g).length).to.equal(9);
   });
+
+  it('should hide/unhide percentage of words', function () {
+    var actual = new Memorize(input).hidePercent(0.5).toString();
+    expect(actual.match(/_+/g).length).to.equal(13);
+    actual = new Memorize(input).hidePercent(0.75).toString();
+    expect(actual.match(/_+/g).length).to.equal(19);
+  });
 });
