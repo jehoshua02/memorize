@@ -21,3 +21,5 @@ node -i
 > var Memorize = require('./src/Memorize'); var m = new Memorize('...');
 > m.hide('5').toString();
 ```
+
+![CLI Screenshot](./cli-screenshot.png)
