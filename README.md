@@ -23,3 +23,5 @@ node -i
 ```
 
 ![CLI Screenshot](./cli-screenshot.png)
+
+Look at source code for more methods!
